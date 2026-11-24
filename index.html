@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10172f">
+  <meta name="description" content="Create a krathong and share wishes along a moonlit Loy Krathong river.">
+  <title>Moonlit River — Loy Krathong</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-en="Skip to content" data-th="ข้ามไปยังเนื้อหา">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Moonlit River home">
+      <span class="brand-mark" aria-hidden="true">❋</span>
+      <span data-en="Moonlit River" data-th="สายน้ำใต้แสงจันทร์">Moonlit River</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#maker" data-en="Make a krathong" data-th="ทำกระทง">Make a krathong</a>
+      <a href="#river" data-en="Our river" data-th="สายน้ำของเรา">Our river</a>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-button" id="language-toggle" type="button" aria-label="Switch language">ไทย</button>
+      <button class="icon-button sound-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Play background music">
+        <span aria-hidden="true">♫</span><span class="tool-label" data-en="Music" data-th="ดนตรี">Music</span>
+      </button>
+      <button class="icon-button sound-toggle" id="effects-toggle" type="button" aria-pressed="false" aria-label="Mute sound effects">
+        <span aria-hidden="true">◖</span><span class="tool-label" data-en="Sound on" data-th="เปิดเสียง">Sound on</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero night-sky" id="home" aria-labelledby="hero-title">
+      <div class="stars" aria-hidden="true"></div>
+      <div class="moon" aria-hidden="true"><span></span></div>
+      <div class="cloud cloud-one" aria-hidden="true"></div>
+      <div class="cloud cloud-two" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow" data-en="A little celebration" data-th="ค่ำคืนแสนพิเศษ">A little celebration</p>
+        <h1 id="hero-title"><span data-en="Meet me by the" data-th="แล้วพบกันที่">Meet me by the</span><br><em data-en="moonlit river" data-th="สายน้ำใต้แสงจันทร์">moonlit river</em></h1>
+        <a class="button button-gold" href="#maker"><span data-en="Make a krathong" data-th="มาทำกระทงกัน">Make a krathong</span><span aria-hidden="true"> ↗</span></a>
+      </div>
+      <div class="hero-river" aria-hidden="true">
+        <div class="moon-reflection"></div>
+        <div class="water-line line-a"></div><div class="water-line line-b"></div><div class="water-line line-c"></div>
+        <div class="hero-krathong"><span class="hero-flame"></span><span class="hero-petal"></span></div>
+      </div>
+    </section>
+
+    <section class="section-wrap maker-section" id="maker" aria-labelledby="maker-title">
+      <div class="section-heading">
+        <p class="eyebrow" data-en="Your little offering" data-th="กระทงของคุณ">Your little offering</p>
+        <h2 id="maker-title" data-en="Make it your own" data-th="ออกแบบกระทงในแบบของคุณ">Make it your own</h2>
+      </div>
+      <div class="maker-layout">
+        <form class="maker-controls" id="maker-form">
+          <fieldset>
+            <legend><span class="step-number">01</span><span data-en="Choose a base" data-th="เลือกฐานกระทง">Choose a base</span></legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="base" value="banana" checked><span class="choice-icon">🍃</span><span data-en="Banana trunk" data-th="หยวกกล้วย">Banana trunk</span></label>
+              <label class="choice"><input type="radio" name="base" value="bread"><span class="choice-icon">🍞</span><span data-en="Bread" data-th="ขนมปัง">Bread</span></label>
+              <label class="choice"><input type="radio" name="base" value="leaf"><span class="choice-icon">🌿</span><span data-en="Leaf" data-th="ใบตอง">Leaf</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="step-number">02</span><span data-en="Pick a flower" data-th="เลือกดอกไม้">Pick a flower</span></legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="flower" value="lotus" checked><span class="choice-icon">🪷</span><span data-en="Lotus" data-th="ดอกบัว">Lotus</span></label>
+              <label class="choice"><input type="radio" name="flower" value="marigold"><span class="choice-icon">🌼</span><span data-en="Marigold" data-th="ดาวเรือง">Marigold</span></label>
+              <label class="choice"><input type="radio" name="flower" value="orchid"><span class="choice-icon">🌸</span><span data-en="Orchid" data-th="กล้วยไม้">Orchid</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="step-number">03</span><span data-en="Choose your colors" data-th="เลือกสี">Choose your colors</span></legend>
+            <div class="swatch-row">
+              <label class="swatch"><input type="radio" name="color" value="gold" checked><span class="swatch-dot color-gold"></span><span data-en="Golden" data-th="สีทอง">Golden</span></label>
+              <label class="swatch"><input type="radio" name="color" value="pink"><span class="swatch-dot color-pink"></span><span data-en="Lotus pink" data-th="ชมพูบัว">Lotus pink</span></label>
+              <label class="swatch"><input type="radio" name="color" value="green"><span class="swatch-dot color-green"></span><span data-en="Leaf green" data-th="เขียวใบตอง">Leaf green</span></label>
+              <label class="swatch"><input type="radio" name="color" value="orange"><span class="swatch-dot color-orange"></span><span data-en="Sunset" data-th="สีส้ม">Sunset</span></label>
+            </div>
+          </fieldset>
+          <div class="select-row">
+            <label for="candle-style"><span data-en="Candle style" data-th="เทียน">Candle style</span>
+              <select id="candle-style" name="candle"><option value="taper" data-en="Little taper" data-th="เทียนเล่มเล็ก">Little taper</option><option value="lotus" data-en="Lotus candle" data-th="เทียนดอกบัว">Lotus candle</option><option value="glow" data-en="Soft glow" data-th="แสงนุ่มนวล">Soft glow</option></select>
+            </label>
+            <label class="check-choice"><input type="checkbox" name="incense" checked><span data-en="Add incense" data-th="เพิ่มธูป">Add incense</span></label>
+          </div>
+          <div class="form-actions"><button class="button button-outline" id="surprise-button" type="button"><span aria-hidden="true">✧</span> <span data-en="Surprise me" data-th="สุ่มแบบให้หน่อย">Surprise me</span></button></div>
+        </form>
+
+        <div class="preview-card">
+          <div class="preview-sky" aria-label="Live krathong preview">
+            <div class="preview-moon"></div>
+            <div class="preview-stars" aria-hidden="true">✦　·　✧　·　✦</div>
+            <div class="krathong-preview" id="krathong-preview">
+              <div class="incense-stick incense-one"></div><div class="incense-stick incense-two"></div>
+              <div class="candle-flame" id="preview-flame"></div><div class="preview-flower" id="preview-flower">🪷</div>
+              <div class="preview-base" id="preview-base"></div>
+            </div>
+            <div class="preview-water"><span></span><span></span><span></span></div>
+          </div>
+          <p class="preview-caption"><span data-en="A small wish, made with love" data-th="ความปรารถนาเล็ก ๆ ที่ทำด้วยใจ">A small wish, made with love</span><span class="preview-heart" aria-hidden="true">♡</span></p>
+          <form id="wish-form" class="wish-form">
+            <label for="wish-name"><span data-en="Your name" data-th="ชื่อของคุณ">Your name</span><input id="wish-name" name="name" maxlength="40" autocomplete="name" placeholder="e.g. Nana"></label>
+            <label for="wish-text"><span data-en="A wish, or something to let go of" data-th="คำอธิษฐาน หรือสิ่งที่อยากปล่อยวาง">A wish, or something to let go of</span><textarea id="wish-text" name="wish" rows="3" maxlength="240" required placeholder="May we always find our way back to one another…"></textarea></label>
+            <label class="grudge-choice"><input id="grudge-mode" type="checkbox"><span><strong data-en="A little letting go" data-th="ขอปล่อยวางสักนิด">A little letting go</strong><small data-en="Let go of a grudge, gently and in your own time." data-th="ค่อย ๆ วางความขุ่นข้องไว้ ตามจังหวะของหัวใจ">Let go of a grudge, gently and in your own time.</small></span></label>
+            <p class="gentle-message" id="grudge-message" hidden data-en="You deserve gentleness, too. Letting go can begin with one small breath." data-th="คุณเองก็สมควรได้รับความอ่อนโยน การปล่อยวางอาจเริ่มจากลมหายใจเล็ก ๆ">You deserve gentleness, too. Letting go can begin with one small breath.</p>
+            <button class="button button-gold button-wide" type="submit"><span data-en="Float my krathong" data-th="ลอยกระทงของฉัน">Float my krathong</span><span aria-hidden="true"> ✧</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="float-scene" id="float-scene" aria-labelledby="float-title" hidden>
+      <div class="float-copy">
+        <p class="eyebrow" data-en="A wish for the water" data-th="ฝากคำอธิษฐานไว้กับสายน้ำ">A wish for the water</p>
+        <h2 id="float-title" data-en="Let it find its way" data-th="ขอให้ความหวังเดินทางไปถึง">Let it find its way</h2>
+        <p class="floating-wish" id="floating-wish"></p>
+        <p class="floating-name" id="floating-name"></p>
+        <button class="button button-outline light-outline" id="float-again" type="button"><span data-en="Make another" data-th="ทำกระทงอีกใบ">Make another</span> ↗</button>
+      </div>
+      <div class="float-water">
+        <div class="float-moon"></div><div class="float-ripple ripple-one"></div><div class="float-ripple ripple-two"></div>
+        <div class="floating-krathong"><span class="float-candle"></span><span class="float-flower" id="floating-flower">🪷</span></div>
+      </div>
+    </section>
+
+    <section class="section-wrap river-section" id="river" aria-labelledby="river-title">
+      <div class="section-heading">
+        <p class="eyebrow" data-en="A river of little lights" data-th="สายน้ำแห่งแสงเล็ก ๆ">A river of little lights</p>
+        <h2 id="river-title" data-en="River" data-th="สายน้ำ">River</h2>
+        <p class="river-count" id="river-count" aria-live="polite"></p>
+      </div>
+      <div class="river-scene" id="river-scene">
+        <div class="river-bank bank-top" aria-hidden="true"><span>❀　✿　❀　　　❀　✿　❀　　❀</span></div>
+        <div class="river-surface" id="river-surface" aria-live="polite"></div>
+        <p class="empty-river" id="empty-river"><span aria-hidden="true">☾</span><span data-en="The river is waiting for its first light." data-th="สายน้ำกำลังรอแสงแรกจากกระทงของคุณ">The river is waiting for its first light.</span><a href="#maker" data-en="Float the first krathong" data-th="ลอยกระทงใบแรก">Float the first krathong</a></p>
+        <div class="river-bank bank-bottom" aria-hidden="true"><span>✿　❀　✿　　❀　✿　❀　　　✿</span></div>
+      </div>
+      <div class="river-actions">
+        <button class="button button-outline" id="ripple-button" type="button"><span aria-hidden="true">◌</span> <span data-en="Make a ripple" data-th="สร้างระลอกคลื่น">Make a ripple</span></button>
+        <button class="button button-outline" id="lantern-button" type="button"><span aria-hidden="true">✧</span> <span data-en="Release a lantern" data-th="ปล่อยโคมลอย">Release a lantern</span></button>
+        <button class="button button-outline" id="firework-button" type="button"><span aria-hidden="true">✺</span> <span data-en="Release a firework" data-th="จุดพลุ">Release a firework</span></button>
+      </div>
+      <div class="lantern-sky" id="lantern-sky" aria-live="polite" aria-label="Floating sky lanterns"></div>
+      <div class="firework-sky" id="firework-sky" aria-hidden="true"></div>
+    </section>
+
+    <section class="settings-section" id="settings" aria-labelledby="settings-title">
+      <div class="section-wrap settings-wrap">
+        <div><p class="eyebrow" id="settings-scope" data-en="Just for this device" data-th="สำหรับอุปกรณ์นี้เท่านั้น">Just for this device</p><h2 id="settings-title" data-en="Settings" data-th="ตั้งค่า">Settings</h2></div>
+        <p class="shared-note" id="shared-note" data-en="This River is shared: anyone with its link can view and add wishes." data-th="สายน้ำนี้ใช้ร่วมกัน: ทุกคนที่มีลิงก์จะเห็นและเพิ่มคำอธิษฐานได้" hidden>This River is shared: anyone with its link can view and add wishes.</p>
+        <div class="settings-actions">
+          <button class="button button-outline" id="export-button" type="button" data-en="Export our wishes" data-th="ดาวน์โหลดคำอธิษฐาน">Export our wishes</button>
+          <label class="motion-setting"><input id="motion-toggle" type="checkbox"><span data-en="Reduce motion" data-th="ลดการเคลื่อนไหว">Reduce motion</span></label>
+          <button class="button button-danger" id="reset-button" type="button" data-en="Reset saved data" data-th="ลบข้อมูลที่บันทึก">Reset saved data</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span class="footer-lotus" aria-hidden="true">✿</span><p data-en="Made with love, to share. สุขสันต์วันลอยกระทง" data-th="ทำด้วยรัก เพื่อแบ่งปัน สุขสันต์วันลอยกระทง">Made with love, to share. สุขสันต์วันลอยกระทง</p><a href="#home" data-en="Back to the moon ↑" data-th="กลับไปชมจันทร์ ↑">Back to the moon ↑</a></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <audio id="background-music" loop preload="none" src="assets/audio/loy-krathong.mp3"></audio>
+</body>
+</html>
