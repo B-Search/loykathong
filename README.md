@@ -38,7 +38,7 @@ The local-only mode and the online shared mode use separate storage; existing br
 
 ## Deploy on Vercel with MongoDB Atlas
 
-The root `server.ts` exposes the Vercel request handler in `server.js`; it serves both the website and API. The regular `npm run dev` command still starts the local Node server. To deploy:
+The root `server.ts` exposes the Vercel request handler in `server.js`; `vercel.json` includes the HTML, CSS, JS, and assets in the function bundle. The regular `npm run dev` command still starts the local Node server. To deploy:
 
 1. Push the project to a GitHub repository, then import it from **Vercel → Add New → Project**.
 2. Before deploying, add `MONGODB_URI` (your Atlas connection string) and `MONGODB_DB` (`loykrathong`) under **Project Settings → Environment Variables** for Production. Add them for Preview too if you want preview deployments to use the shared River.
