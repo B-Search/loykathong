@@ -19,6 +19,7 @@ const client = process.env.MONGODB_URI
 const databaseName = process.env.MONGODB_DB || "loykrathong";
 const writesByAddress = new Map();
 let wishesCollection = null;
+let databaseReady = null;
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",
@@ -219,7 +220,7 @@ async function serveStatic(request, response, pathname) {
   });
 }
 
-const server = http.createServer((request, response) => {
+function handleRequest(request, response) {
   const handle = async () => {
     let url;
     try {
@@ -247,18 +248,57 @@ const server = http.createServer((request, response) => {
     console.error("Request failed:", error);
     sendJson(response, 500, { error: "server_error" });
   });
-});
+}
+
+const server = http.createServer(handleRequest);
+
+async function connectToDatabase() {
+  if (!client) return;
+  if (!databaseReady) {
+    databaseReady = client.connect()
+      .then(async () => {
+        const database = client.db(databaseName);
+        wishesCollection = database.collection("shared_wishes");
+        await wishesCollection.createIndex({ createdAt: -1 });
+        console.log(`MongoDB Atlas is connected; shared wish storage is ready in "${databaseName}".`);
+      })
+      .catch((error) => {
+        wishesCollection = null;
+        databaseReady = null;
+        throw error;
+      });
+  }
+  await databaseReady;
+}
+
+async function vercelHandler(request, response) {
+  let isApiRequest = false;
+  try {
+    const url = new URL(request.url || "/", `http://${request.headers.host || "localhost"}`);
+    isApiRequest = url.pathname.startsWith("/api/");
+  } catch {
+    handleRequest(request, response);
+    return;
+  }
+
+  if (isApiRequest && client) {
+    try {
+      await connectToDatabase();
+    } catch (error) {
+      console.error("Could not connect to MongoDB Atlas:", error.message);
+      sendJson(response, 503, { error: "backend_unavailable" });
+      return;
+    }
+  }
+  handleRequest(request, response);
+}
 
 async function startServer() {
   if (process.env.NODE_ENV === "production" && !client) {
     throw new Error("MONGODB_URI must be configured before production startup.");
   }
   if (client) {
-    await client.connect();
-    const database = client.db(databaseName);
-    wishesCollection = database.collection("shared_wishes");
-    await wishesCollection.createIndex({ createdAt: -1 });
-    console.log(`MongoDB Atlas is connected; shared wish storage is ready in "${databaseName}".`);
+    await connectToDatabase();
   } else {
     console.warn("MONGODB_URI is not set; the shared River backend is disabled.");
   }
@@ -268,6 +308,11 @@ async function startServer() {
   });
 }
 
+module.exports = vercelHandler;
+module.exports.server = server;
+module.exports.startServer = startServer;
+module.exports.validateWish = validateWish;
+
 if (require.main === module) {
   startServer().catch(async (error) => {
     console.error("Could not start the application:", error.message);
@@ -275,5 +320,3 @@ if (require.main === module) {
     process.exitCode = 1;
   });
 }
-
-module.exports = { server, startServer, validateWish };

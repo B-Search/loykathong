@@ -1,10 +1,12 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const http = require("node:http");
 const { after, before, test } = require("node:test");
 
 delete process.env.MONGODB_URI;
-const { server, validateWish } = require("../server");
+const app = require("../server");
+const { server, validateWish } = app;
 let baseUrl;
 
 before(async () => {
@@ -39,6 +41,21 @@ test("serves the site but does not expose backend or package files", async () =>
   for (const pathname of ["/server.js", "/package.json", "/node_modules/mongodb/package.json"]) {
     const response = await fetch(`${baseUrl}${pathname}`);
     assert.equal(response.status, 404, `${pathname} should not be publicly served`);
+  }
+});
+
+test("exports a Vercel-compatible handler for site requests", async () => {
+  const functionServer = http.createServer(app);
+  await new Promise((resolve, reject) => {
+    functionServer.once("error", reject);
+    functionServer.listen(0, "127.0.0.1", resolve);
+  });
+  try {
+    const response = await fetch(`http://127.0.0.1:${functionServer.address().port}/`);
+    assert.equal(response.status, 200);
+    assert.match(await response.text(), /Moonlit River/);
+  } finally {
+    await new Promise((resolve) => functionServer.close(resolve));
   }
 });
 

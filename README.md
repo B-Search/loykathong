@@ -32,13 +32,13 @@ Deploy this Node app to a host and connect it to your Atlas cluster. Render is o
 - `APP_ORIGIN` — optionally set to the exact deployed HTTPS origin.
 - `TRUST_PROXY=true` only when the host uses a trusted proxy that sets `X-Forwarded-For`.
 
-Use `npm start` as the service start command. The backend creates the `shared_wishes` collection and its date index automatically. Both visitors use the same River; new wishes sync automatically about every 10 seconds. **Anyone with the deployed link can view and add wishes**, so only share it with people you trust. There is no sign-in, and the online River cannot be cleared with the local reset button. I have prepared the code but have not deployed it; an online link requires a hosting account and Atlas access configuration.
+Use `npm start` as the service start command. The backend creates the `shared_wishes` collection and its date index automatically. Both visitors use the same River; new wishes sync automatically about every 10 seconds. **Anyone with the deployed link can view and add wishes**, so only share it with people you trust. There is no sign-in, and the online River cannot be cleared with the local reset button.
 
 The local-only mode and the online shared mode use separate storage; existing browser wishes are not automatically uploaded.
 
 ## Deploy on Vercel with MongoDB Atlas
 
-The root `server.ts` lets Vercel detect and run the Node server; it serves both the website and API. To deploy:
+The root `server.ts` exposes the Vercel request handler in `server.js`; it serves both the website and API. The regular `npm run dev` command still starts the local Node server. To deploy:
 
 1. Push the project to a GitHub repository, then import it from **Vercel → Add New → Project**.
 2. Before deploying, add `MONGODB_URI` (your Atlas connection string) and `MONGODB_DB` (`loykrathong`) under **Project Settings → Environment Variables** for Production. Add them for Preview too if you want preview deployments to use the shared River.
