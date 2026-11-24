@@ -49,7 +49,7 @@ const I18N = {
   }
 };
 
-let language = "en";
+const language = "th";
 let wishes = [];
 let backendEnabled = false;
 let backendSyncFailed = false;
@@ -135,18 +135,14 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("visible"), 3900);
 }
 
-function applyLanguage(next) {
-  language = next;
+function applyLanguage() {
   document.documentElement.lang = language;
   $$("[data-en][data-th]").forEach((el) => { el.textContent = el.dataset[language]; });
   $$("option[data-en][data-th]").forEach((el) => { el.textContent = el.dataset[language]; });
-  $("#language-toggle").textContent = language === "en" ? "ไทย" : "EN";
-  $("#language-toggle").setAttribute("aria-label", language === "en" ? "Switch to Thai" : "Switch to English");
-  $("#wish-name").placeholder = language === "en" ? "e.g. Nana" : "เช่น นานา";
-  $("#wish-text").placeholder = language === "en" ? "May we always find our way back to one another…" : "ขอให้เราได้กลับมาอยู่พร้อมหน้ากันเสมอ…";
+  $("#wish-name").placeholder = "เช่น นานา";
+  $("#wish-text").placeholder = "ขอให้เราได้กลับมาอยู่พร้อมหน้ากันเสมอ…";
   updateBackendView();
   renderRiver();
-  try { localStorage.setItem("moonlit-river-language", language); } catch { /* The preference is optional. */ }
 }
 
 function createStars() {
@@ -417,7 +413,6 @@ function setMotionPreference(enabled) {
 }
 
 function setupEvents() {
-  $("#language-toggle").addEventListener("click", () => applyLanguage(language === "en" ? "th" : "en"));
   $("#maker-form").addEventListener("change", updatePreview);
   $("#surprise-button").addEventListener("click", surpriseMe);
   $("#wish-form").addEventListener("submit", floatKrathong);
@@ -478,8 +473,7 @@ async function initialize() {
   setupEvents();
   updatePreview();
   renderRiver();
-  const savedLanguage = (() => { try { return localStorage.getItem("moonlit-river-language"); } catch { return null; } })();
-  applyLanguage(savedLanguage === "th" ? "th" : "en");
+  applyLanguage();
   let reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches || false;
   try { reduceMotion = localStorage.getItem("moonlit-river-reduce-motion") === "true" || reduceMotion; } catch { /* Use the operating-system preference. */ }
   $("#motion-toggle").checked = reduceMotion;

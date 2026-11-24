@@ -36,7 +36,11 @@ test("returns a clear service error instead of pretending wishes were saved", as
 test("serves the site but does not expose backend or package files", async () => {
   const page = await fetch(`${baseUrl}/`);
   assert.equal(page.status, 200);
-  assert.match(await page.text(), /Moonlit River/);
+  const pageText = await page.text();
+  assert.match(pageText, /<html lang="th">/);
+  assert.match(pageText, /data-th="ลอยกระทง"/);
+  assert.match(pageText, /data-th="กันมั้ยจ้ะ"/);
+  assert.match(pageText, /Get all A jra/);
 
   for (const pathname of ["/server.js", "/package.json", "/node_modules/mongodb/package.json"]) {
     const response = await fetch(`${baseUrl}${pathname}`);
@@ -53,7 +57,7 @@ test("exports a Vercel-compatible handler for site requests", async () => {
   try {
     const response = await fetch(`http://127.0.0.1:${functionServer.address().port}/`);
     assert.equal(response.status, 200);
-    assert.match(await response.text(), /Moonlit River/);
+    assert.match(await response.text(), /<html lang="th">/);
   } finally {
     await new Promise((resolve) => functionServer.close(resolve));
   }

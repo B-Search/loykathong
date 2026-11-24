@@ -1,32 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10172f">
-  <meta name="description" content="Create a krathong and share wishes along a moonlit Loy Krathong river.">
-  <title>Moonlit River — Loy Krathong</title>
+  <meta name="description" content="ออกแบบกระทง อธิษฐาน และร่วมลอยกระทงใต้แสงจันทร์">
+  <title>ลอยกระทงกันมั้ยจ้ะ</title>
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/app.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main" data-en="Skip to content" data-th="ข้ามไปยังเนื้อหา">Skip to content</a>
+  <a class="skip-link" href="#main" data-en="Skip to content" data-th="ข้ามไปยังเนื้อหา">ข้ามไปยังเนื้อหา</a>
   <header class="site-header">
-    <a class="brand" href="#home" aria-label="Moonlit River home">
+    <a class="brand" href="#home" aria-label="กลับหน้าหลัก">
       <span class="brand-mark" aria-hidden="true">❋</span>
-      <span data-en="Moonlit River" data-th="สายน้ำใต้แสงจันทร์">Moonlit River</span>
     </a>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#maker" data-en="Make a krathong" data-th="ทำกระทง">Make a krathong</a>
-      <a href="#river" data-en="Our river" data-th="สายน้ำของเรา">Our river</a>
+    <nav class="main-nav" aria-label="เมนูหลัก">
+      <a href="#maker" data-en="Make a krathong" data-th="ทำกระทง">ทำกระทง</a>
+      <a href="#river" data-en="Our river" data-th="สายน้ำของเรา">สายน้ำของเรา</a>
     </nav>
     <div class="header-tools">
-      <button class="icon-button" id="language-toggle" type="button" aria-label="Switch language">ไทย</button>
-      <button class="icon-button sound-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Play background music">
-        <span aria-hidden="true">♫</span><span class="tool-label" data-en="Music" data-th="ดนตรี">Music</span>
+      <button class="icon-button sound-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="เล่นเพลงประกอบ">
+        <span aria-hidden="true">♫</span><span class="tool-label" data-en="Music" data-th="ดนตรี">ดนตรี</span>
       </button>
-      <button class="icon-button sound-toggle" id="effects-toggle" type="button" aria-pressed="false" aria-label="Mute sound effects">
-        <span aria-hidden="true">◖</span><span class="tool-label" data-en="Sound on" data-th="เปิดเสียง">Sound on</span>
+      <button class="icon-button sound-toggle" id="effects-toggle" type="button" aria-pressed="false" aria-label="ปิดเสียงเอฟเฟกต์">
+        <span aria-hidden="true">◖</span><span class="tool-label" data-en="Sound on" data-th="เปิดเสียง">เปิดเสียง</span>
       </button>
     </div>
   </header>
@@ -38,9 +36,9 @@
       <div class="cloud cloud-one" aria-hidden="true"></div>
       <div class="cloud cloud-two" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow" data-en="A little celebration" data-th="ค่ำคืนแสนพิเศษ">A little celebration</p>
-        <h1 id="hero-title"><span data-en="Meet me by the" data-th="แล้วพบกันที่">Meet me by the</span><br><em data-en="moonlit river" data-th="สายน้ำใต้แสงจันทร์">moonlit river</em></h1>
-        <a class="button button-gold" href="#maker"><span data-en="Make a krathong" data-th="มาทำกระทงกัน">Make a krathong</span><span aria-hidden="true"> ↗</span></a>
+        <p class="eyebrow" data-en="A little celebration" data-th="ค่ำคืนแสนพิเศษ">ค่ำคืนแสนพิเศษ</p>
+        <h1 id="hero-title"><span data-en="Meet me by the" data-th="ลอยกระทง">ลอยกระทง</span><br><em data-en="moonlit river" data-th="กันมั้ยจ้ะ">กันมั้ยจ้ะ</em></h1>
+        <a class="button button-gold" href="#maker"><span data-en="Make a krathong" data-th="มาทำกระทงกัน">มาทำกระทงกัน</span><span aria-hidden="true"> ↗</span></a>
       </div>
       <div class="hero-river" aria-hidden="true">
         <div class="moon-reflection"></div>
@@ -91,7 +89,7 @@
         </form>
 
         <div class="preview-card">
-          <div class="preview-sky" aria-label="Live krathong preview">
+          <div class="preview-sky" aria-label="ตัวอย่างกระทงแบบเรียลไทม์">
             <div class="preview-moon"></div>
             <div class="preview-stars" aria-hidden="true">✦　·　✧　·　✦</div>
             <div class="krathong-preview" id="krathong-preview">
@@ -144,7 +142,7 @@
         <button class="button button-outline" id="lantern-button" type="button"><span aria-hidden="true">✧</span> <span data-en="Release a lantern" data-th="ปล่อยโคมลอย">Release a lantern</span></button>
         <button class="button button-outline" id="firework-button" type="button"><span aria-hidden="true">✺</span> <span data-en="Release a firework" data-th="จุดพลุ">Release a firework</span></button>
       </div>
-      <div class="lantern-sky" id="lantern-sky" aria-live="polite" aria-label="Floating sky lanterns"></div>
+      <div class="lantern-sky" id="lantern-sky" aria-live="polite" aria-label="โคมลอยบนท้องฟ้า"></div>
       <div class="firework-sky" id="firework-sky" aria-hidden="true"></div>
     </section>
 
@@ -161,7 +159,7 @@
     </section>
   </main>
 
-  <footer class="site-footer"><span class="footer-lotus" aria-hidden="true">✿</span><p data-en="Made with love, to share. สุขสันต์วันลอยกระทง" data-th="ทำด้วยรัก เพื่อแบ่งปัน สุขสันต์วันลอยกระทง">Made with love, to share. สุขสันต์วันลอยกระทง</p><a href="#home" data-en="Back to the moon ↑" data-th="กลับไปชมจันทร์ ↑">Back to the moon ↑</a></footer>
+  <footer class="site-footer"><p class="footer-message">Get all A jra</p><a href="#home" data-en="Back to the moon ↑" data-th="กลับไปด้านบน ↑">กลับไปด้านบน ↑</a></footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <audio id="background-music" loop preload="none" src="assets/audio/loy-krathong.mp3"></audio>
